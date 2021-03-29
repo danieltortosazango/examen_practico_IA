@@ -13,18 +13,44 @@
 )
 
 (defrule multiplicar
-    	(valor ?x contador_reglas_utilizadas ?y)
+	(valor ?x contador_reglas_utilizadas ?y)
 	(valor_multiplicado ?v)
-	(numeros $?n)
-	(?v = ?n *?n)
-	(?x = ?v)
-	(?y = ?y + 1)
+	(numeros $?z)
 =>
-    	(assert (valor ?x contador_reglas_utilizadas ?y))
-	(assert (valor_multiplicado ?v)
+	(retract $?z)
+	(assert (valor ?v contador_reglas_utilizadas (+ ?y 1)))
     	(printout t crlf "Ha multiplicado" crlf)
 )
 
+(defrule dividir
+	(valor ?x contador_reglas_utilizadas ?y)
+	(valor_dividido ?v)
+	(numeros $?z)
+=>
+	(retract $?z)
+	(assert (valor ?v contador_reglas_utilizadas (+ ?y 1)))
+    	(printout t crlf "Ha multiplicado" crlf)
+)
+
+(defrule restar
+	(valor ?x contador_reglas_utilizadas ?y)
+	(valor_restado ?v)
+	(numeros $?z)
+=>
+	(retract $?z)
+	(assert (valor ?v contador_reglas_utilizadas (+ ?y 1)))
+    	(printout t crlf "Ha multiplicado" crlf)
+)
+
+(defrule sumar
+	(valor ?x contador_reglas_utilizadas ?y)
+	(valor_sumado ?v)
+	(numeros $?z)
+=>
+	(retract $?z)
+	(assert (valor ?v contador_reglas_utilizadas (+ ?y 1)))
+    	(printout t crlf "Ha multiplicado" crlf)
+)
 
 (defrule es_la_solucion
     	(declare (salience 99))
